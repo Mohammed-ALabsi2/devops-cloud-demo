@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معمل الاختراق الأخلاقي | Cyber Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        :root {
+            --bg-dark: #07090e;
+            --bg-card: #0d1117;
+            --neon-green: #00ff66;
+            --neon-purple: #a855f7;
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* ----- Navbar ----- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background-color: rgba(13, 17, 23, 0.9);
+            border-bottom: 1px solid rgba(0, 255, 102, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .brand {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #fff;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .brand span {
+            color: var(--neon-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-green);
+        }
+
+        /* ----- Hero Section ----- */
+        .hero {
+            padding: 160px 20px 80px 20px;
+            text-align: center;
+            background: radial-gradient(circle at top center, #161b22 0%, #07090e 70%);
+        }
+
+        .terminal-tag {
+            font-family: 'Fira Code', monospace;
+            color: var(--neon-green);
+            background: rgba(0, 255, 102, 0.08);
+            padding: 6px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 102, 0.3);
+            display: inline-block;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--neon-purple);
+            text-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .hero p {
+            color: var(--text-dim);
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin: 0 auto 35px auto;
+        }
+
+        .btn-launch {
+            background: linear-gradient(135deg, var(--neon-green), #00b347);
+            color: #000;
+            font-weight: 700;
+            padding: 15px 45px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.3);
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-launch:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 255, 102, 0.6);
+        }
+
+        /* ----- Features Grid (Dark Minimalist) ----- */
+        .grid-section {
+            padding: 60px 7% 90px 7%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+.card {
+            background-color: var(--bg-card);
+            border: 1px solid #21262d;
+            border-radius: 12px;
+            padding: 30px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-purple));
+        }
+
+        .card:hover {
+            border-color: #30363d;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-num {
+            font-family: 'Fira Code', monospace;
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+
+        /* ----- Terminal Console Box (Interactive JS) ----- */
+        .console-section {
+            background-color: #000;
+            border-top: 1px solid #21262d;
+            padding: 60px 20px;
+        }
+
+        .terminal-window {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            font-family: 'Fira Code', monospace;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background-color: #161b22;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background-color: #ff5f56; }
+        .yellow { background-color: #ffbd2e; }
+        .green { background-color: #27c93f; }
+
+        .terminal-body {
+            padding: 25px;
+            color: var(--neon-green);
+            font-size: 0.95rem;
+            min-height: 140px;
+        }
+
+        .console-btn {
+            background-color: transparent;
+            color: var(--neon-purple);
+            border: 1px solid var(--neon-purple);
+            padding: 10px 20px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .console-btn:hover {
+            background-color: var(--neon-purple);
+            color: #fff;
+        }
+
+        /* ----- Footer ----- */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-dim);
+            border-top: 1px solid #161b22;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="brand">&gt; Root<span>Lab_</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero">الرئيسية</a></li>
+            <li><a href="#labs">المختبرات</a></li>
+            <li><a href="#tools">الأدوات</a></li>
+            <li><a href="#console">أمر النظام</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="terminal-tag">$ init --cloud-lab --azure</div>
+        <h1>اختبار الاختراق <span>والتطبيق العملي</span></h1>
+        <p>بيئة سحابية معزولة لاختبار ثغرات الويب، فحص الشبكات، وتطبيق أدوات الأمن السحابي وفق أعلى المعايير.</p>
+        <a href="#labs" class="btn-launch">بدء المختبر</a>
+    </section>
+
+    <!-- Cards Grid -->
+    <section class="grid-section" id="labs">
+
+
+<h2 class="grid-title">مسارات الاختراق الأخلاقي</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-num">01 // Web Hacking</div>
+                <h3>اختبار ثغرات الويب</h3>
+                <p>تحليل وتقييم ثغرات محقن SQL والتمرير عبر المواقع (XSS) داخل بيئات افتراضية مخصصة.</p>
+            </div>
+            <div class="card">
+                <div class="card-num">02 // Cloud Labs</div>
+                <h3>أمن البنية السحابية</h3>
+                <p>إدارة الهويات وحماية الأصول السحابية داخل Azure ومعاينة توزيع حزم الشبكات.</p>
+            </div>
+            <div class="card">
+                <div class="card-num">03 // Network Forensics</div>
+                <h3>التحليل الرقمي للشبكات</h3>
+                <p>تتبع حزم البيانات واكتشاف ثغرات التشفير والهجمات الموجهة على الراوترات والجدران النارية.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Window -->
+    <section class="console-section" id="console">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <span style="color: #8b949e; font-size: 0.8rem; margin-right: 10px;">bash - azure-check</span>
+            </div>
+            <div class="terminal-body">
+                <p id="log-text">$ azure storage status --check</p>
+                <p id="log-output" style="color: var(--text-dim); margin-top: 8px;">[إشعار]: اضغط على الزر أدناه لتنفيذ أمر فحص الاستضافة...</p>
+                <button class="console-btn" onclick="runDiagnostic()">تشغيل الفحص (Run Diagnostic)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>مشروع الحوسبة السحابية | تم النشر والتطوير على Azure Static Storage &copy; 2026</p>
+    </footer>
+
+    <script>
+        function runDiagnostic() {
+            const output = document.getElementById('log-output');
+            output.style.color = '#00ff66';
+            output.innerHTML = '[SUCCESS]: 200 OK - Azure Storage static website is up and running perfectly!';
+        }
+    </script>
+</body>
+</html>
+
