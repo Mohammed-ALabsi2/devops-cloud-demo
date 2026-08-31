@@ -1,0 +1,12 @@
+{
+  "name": "devops-cloud-demo",
+  "version": "1.0.0",
+  "description": "DevOps Demo",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build completed successfully'",
+    "start": "echo 'App running'"
+  },
+  "author": "",
+  "license": "ISC"
+}
