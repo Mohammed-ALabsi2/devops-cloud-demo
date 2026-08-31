@@ -1,4 +1,4 @@
-name: Build and deploy Node.js app to Azure Web App - devops-mo
+name: Build and deploy static site to Azure Web App - devops-mo
 
 on:
   push:
@@ -21,9 +21,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: 'Development'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
@@ -36,5 +33,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'devops-mo'
-          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3108463920268F31 }}
